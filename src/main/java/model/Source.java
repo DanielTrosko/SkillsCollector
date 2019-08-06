@@ -1,10 +1,10 @@
-package listeners;
+package model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "sources")
+@Table(name = "Sources")
 public class Source {
 
     @Id
@@ -20,7 +20,7 @@ public class Source {
                     referencedColumnName = "SKID"
             )
     )
-    @OneToMany
+    @Column
     private Long id;
     @Column(nullable = false)
     private String description;
@@ -68,7 +68,7 @@ public class Source {
 
     @Override
     public String toString() {
-        return "listeners.Source{" +
+        return "model.Source{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
                 ", name='" + name + '\'' +

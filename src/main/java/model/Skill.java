@@ -1,10 +1,10 @@
-package listeners;
+package model;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "skills")
+@Table(name = "Skills")
 public class Skill {
 
     @Id
@@ -46,7 +46,7 @@ public class Skill {
 
     @Override
     public String toString() {
-        return "listeners.Skill{" +
+        return "model.Skill{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

@@ -5,6 +5,9 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+import model.Skill;
+import model.Source;
+import model.User;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -33,15 +36,14 @@ public class HibernateInitializer implements ServletContextListener {
             hbnProperties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
             // W przypadku gdy silnik Hibernate ma tworzyć schemat bazy danych, to poniżej
             // użyj opcji create-drop albo update
-//            hbnProperties.put(Environment.HBM2DDL_AUTO, "validate");
-            hbnProperties.put(Environment.HBM2DDL_AUTO, "update");
+            hbnProperties.put(Environment.HBM2DDL_AUTO, "validate");
             configuration.setProperties(hbnProperties);
 
             // Odkomentuj poniższe instrukcje po utworzeniu klas encji (kolejne zadania)
 
-//            configuration.addAnnotatedClass(User.class);
-//            configuration.addAnnotatedClass(Source.class);
-//            configuration.addAnnotatedClass(Skill.class);
+            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(Source.class);
+            configuration.addAnnotatedClass(Skill.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
